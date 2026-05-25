@@ -1,0 +1,70 @@
+completion_models:
+  default_completion_model:
+    type: litellm
+    model_provider: openai
+    model: gpt-5.4-mini
+    auth_method: api_key
+    api_key: ${GRAPHRAG_API_KEY}
+    call_args:
+      temperature: 0
+
+embedding_models:
+  default_embedding_model:
+    type: litellm
+    model_provider: ollama
+    model: qwen3-embedding:0.6b
+    auth_method: api_key
+    api_key: ${OLLAMA_API_KEY}
+    api_base: http://localhost:11434
+
+input:
+  type: text
+
+chunking:
+  type: tokens
+  encoding_model: cl100k_base
+  size: 500
+  overlap: 100
+  prepend_metadata:
+    - title
+
+output:
+  type: file
+  base_dir: output
+
+cache:
+  type: json
+  storage:
+    type: file
+    base_dir: cache
+
+extract_graph:
+  completion_model_id: default_completion_model
+  prompt: "prompts/extract_graph.txt"
+  entity_types:
+    - person
+    - organization
+    - location
+    - event
+    - date
+  max_gleanings: 1
+
+summarize_descriptions:
+  completion_model_id: default_completion_model
+  prompt: "prompts/summarize_descriptions.txt"
+  max_length: 500
+
+community_reports:
+  completion_model_id: default_completion_model
+  graph_prompt: "prompts/community_report_graph.txt"
+  text_prompt: "prompts/community_report_text.txt"
+  max_length: 1200
+  max_input_length: 6000
+
+extract_claims:
+  enabled: false
+
+snapshots:
+  graphml: true
+  embeddings: false
+  raw_graph: false

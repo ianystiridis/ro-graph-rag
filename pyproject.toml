@@ -1,0 +1,31 @@
+[project]
+name = "ro-graph-rag"
+version = "0.1.0"
+description = "Comparison between tarditional RAG system and a Graph RAG system."
+authors = [
+    {name = "Ianys Tiridis",email = "tiridis.ianys05@gmail.com"}
+]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+graphrag = "3.0.8"
+pandas = ">=2.2,<3.0"
+pyarrow = ">=22.0,<23.0"
+python-dotenv = ">=1.0,<2.0"
+requests = ">=2.32,<3.0"
+tqdm = ">=4.66,<5.0"
+chromadb = ">=0.5,<2.0"
+sentence-transformers = ">=3.0,<6.0"
+spacy = ">=3.7,<4.0"
+streamlit = "^1.57.0"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = ">=6.29,<7.0"
+jupyter = ">=1.0,<2.0"
+pytest = ">=8.0,<9.0"
+black = ">=24.0,<26.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
