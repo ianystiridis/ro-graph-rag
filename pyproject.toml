@@ -19,6 +19,10 @@ chromadb = ">=0.5,<2.0"
 sentence-transformers = ">=3.0,<6.0"
 spacy = ">=3.7,<4.0"
 streamlit = "^1.57.0"
+stanza = "^1.12.1"
+torchvision = "^0.27.0"
+networkx = "^3.6.1"
+pyvis = "^0.3.2"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = ">=6.29,<7.0"
@@ -29,3 +33,9 @@ black = ">=24.0,<26.0"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+packages = [
+    { include = "baseline", from = "src" },
+    { include = "knowledge_graph", from = "src" }
+]

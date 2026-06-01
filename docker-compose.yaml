@@ -1,0 +1,9 @@
+services:
+  chroma:
+    image: chromadb/chroma:latest
+    container_name: rowiki-chroma
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./vectordb/chroma_data:/data
+    restart: unless-stopped
